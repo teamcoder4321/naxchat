@@ -1,0 +1,186 @@
+/* Wheel Container */
+.wheel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px);
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f8f9fa, #f0f0f0);
+}
+
+.wheel-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.wheel-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  color: #333;
+}
+
+.wheel-header p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* Wheel Canvas Wrapper */
+.wheel-canvas-wrapper {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  margin-bottom: 40px;
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 28px solid #f59e0b;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  z-index: 10;
+}
+
+.wheel-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Spin Button */
+.spin-button {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #000;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  min-width: 240px;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.spin-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.spin-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.spin-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Result */
+.wheel-result {
+  text-align: center;
+  margin-bottom: 20px;
+  animation: resultPop 0.4s ease;
+}
+
+@keyframes resultPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.result-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.result-text {
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+}
+
+.result-amount {
+  color: #f59e0b;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+/* Spin Info */
+.spin-info {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.spin-info p {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Spinning Animation */
+.spin-animation {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  animation: spinGlow 2s ease infinite;
+}
+
+@keyframes spinGlow {
+  0% {
+    box-shadow: inset 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+  50% {
+    box-shadow: inset 0 0 0 100px rgba(245, 158, 11, 0.1);
+  }
+  100% {
+    box-shadow: inset 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .wheel-container {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .wheel-header h1 {
+    font-size: 24px;
+  }
+
+  .wheel-canvas-wrapper {
+    width: 280px;
+    height: 280px;
+    margin-bottom: 30px;
+  }
+
+  .spin-button {
+    min-width: 200px;
+    padding: 12px 30px;
+    font-size: 14px;
+  }
+}
